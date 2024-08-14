@@ -1,0 +1,26 @@
+                                 OLS Regression Results                                
+=======================================================================================
+Dep. Variable:        chance_of_admit   R-squared (uncentered):                   0.983
+Model:                            OLS   Adj. R-squared (uncentered):              0.983
+Method:                 Least Squares   F-statistic:                          1.408e+04
+Date:                Wed, 07 Aug 2024   Prob (F-statistic):                        0.00
+Time:                        19:36:25   Log-Likelihood:                          457.42
+No. Observations:                 500   AIC:                                     -910.8
+Df Residuals:                     498   BIC:                                     -902.4
+Df Model:                           2                                                  
+Covariance Type:            nonrobust                                                  
+===============================================================================
+                  coef    std err          t      P>|t|      [0.025      0.975]
+-------------------------------------------------------------------------------
+toefl_score     0.0062   6.28e-05     98.200      0.000       0.006       0.006
+research        0.1136      0.009     12.618      0.000       0.096       0.131
+==============================================================================
+Omnibus:                       47.468   Durbin-Watson:                   0.756
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               58.375
+Skew:                          -0.808   Prob(JB):                     2.11e-13
+Kurtosis:                       3.434   Cond. No.                         223.
+==============================================================================
+
+Notes:
+[1] R² is computed without centering (uncentered) since the model does not contain a constant.
+[2] Standard Errors assume that the covariance matrix of the errors is correctly specified.
