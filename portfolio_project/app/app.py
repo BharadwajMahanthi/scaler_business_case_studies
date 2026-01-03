@@ -7,8 +7,19 @@ import joblib
 import numpy as np
 
 # Load model and scaler
-model = joblib.load('random_forest_model.pkl')
-scaler = joblib.load('scaler.pkl')
+import os
+
+# Load model and scaler
+@st.cache_resource
+def load_artifacts():
+    app_dir = os.path.dirname(__file__)
+    model_path = os.path.join(app_dir, 'random_forest_model.pkl')
+    scaler_path = os.path.join(app_dir, 'scaler.pkl')
+    model = joblib.load(model_path)
+    scaler = joblib.load(scaler_path)
+    return model, scaler
+
+model, scaler = load_artifacts()
 
 # Streamlit app
 st.title("Insurance Premium Calculator")
@@ -31,7 +42,7 @@ with st.form("health_form"):
 # Prediction
 if submit:
     # Calculate BMI
-    bmi = weight / (height / 100) ** 2
+    bmi: float = weight / (height / 100) ** 2
     # Prepare input data
     input_data = pd.DataFrame({
         'Age': [age],
@@ -52,8 +63,8 @@ if submit:
     # Predict
     premium = model.predict(input_data)[0]
     # Confidence interval (approximate, based on RF predictions)
-    ci_lower = premium - 1.96 * 5000  # Assuming std ~5000 from data
-    ci_upper = premium + 1.96 * 5000
+    ci_lower: float = float(premium - 1.96 * 5000)  # Assuming std ~5000 from data
+    ci_upper: float = float(premium + 1.96 * 5000)
     st.success(f"Estimated Premium: ${premium:,.2f}")
     st.write(f"95% Confidence Interval: ${ci_lower:,.2f} – ${ci_upper:,.2f}")
 

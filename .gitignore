@@ -1,0 +1,27 @@
+# Large datasets
+*.csv
+*.csv.zip
+*.zip
+*.rar
+
+# Models
+*.pkl
+*.h5
+*.model
+*.twbx
+*.twb
+
+# Documents
+*.pdf
+*.docx
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+venv/
+.env
+
+# System
+.DS_Store
+Thumbs.db
